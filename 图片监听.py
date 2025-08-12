@@ -23,7 +23,10 @@ class MyHandler(FileSystemEventHandler):
             
 
 if __name__ == "__main__":
-    folder_to_watch = "C:/Users/xutianci/Documents/Tencent Files/971308078/nt_qq/nt_data/Pic/2025-08/Ori"  # 要监听的文件夹路径
+    folder_to_watch = "替换为要监听的文件夹路径"  # 要监听的文件夹路径
+    #目录位置查看方法： 1.在需要监听的qq的界面找到一张 【非表情包】的图片  右键点开文件位置 
+    #【目录展示】用户名\Documents\Tencent Files\*********（qq号）\nt_qq\nt_data\Pic\2025-08\Thumb（注意反斜杠）
+    #   只要监听到“\Pic”文件夹！！！！！！
     event_handler = MyHandler()
     observer = Observer()
     observer.schedule(event_handler, folder_to_watch, recursive=False)
@@ -32,6 +35,7 @@ if __name__ == "__main__":
     try:
         while True:
             time.sleep(1)  # 保持主线程运行
+            
     except KeyboardInterrupt:
         observer.stop()  # 按 Ctrl+C 停止监听
     observer.join()
